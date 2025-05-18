@@ -5,13 +5,6 @@ A fully responsive food ordering website that allows users to browse dishes, vie
 ---
 
 
-## 📸 Screenshots
-
-![Homepage](images/screenshot-home.png)
-![Menu Page](images/screenshot-menu.png)
-![Cart Functionality](images/screenshot-cart.png)
-
----
 
 ✨ Features
 
