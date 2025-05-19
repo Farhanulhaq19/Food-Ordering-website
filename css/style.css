@@ -700,7 +700,17 @@ header .icons #menu-bars{
     }
 
 }
+#cart-box ul li .remove-btn {
+    cursor: pointer;
+    color: #ff3838;
+    font-size: 1.2rem;
+    margin-left: 10px;
+    transition: color 0.3s ease;
+}
 
+#cart-box ul li .remove-btn:hover {
+    color: #d32f2f;
+}
 
         #cart-icon {
             position: relative;
