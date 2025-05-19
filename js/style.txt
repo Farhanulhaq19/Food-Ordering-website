@@ -700,4 +700,308 @@ header .icons #menu-bars{
     }
 
 }
+#cart-box ul li .remove-btn {
+    cursor: pointer;
+    color: #ff3838;
+    font-size: 1.2rem;
+    margin-left: 10px;
+    transition: color 0.3s ease;
+}
 
+#cart-box ul li .remove-btn:hover {
+    color: #d32f2f;
+}
+
+        #cart-icon {
+            position: relative;
+            text-decoration: none;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ff3838;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .cart-box {
+            position: fixed;
+            top: 80px;
+            right: 30px;
+            background-color: white;
+            color: black;
+            padding: 15px;
+            border: 1px solid #ccc;
+            width: 250px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            border-radius: 5px;
+        }
+
+        .cart-box h3 {
+            margin: 0 0 10px 0;
+        }
+
+        .cart-box ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .cart-box li {
+            border-bottom: 1px solid #eee;
+            padding: 5px 0;
+        }
+        /* Styling the Liked Dishes Section */
+#liked-dishes {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#liked-dishes-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#liked-dishes-list li {
+    padding: 10px;
+    background: #fff;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+/* Existing styles here... */
+
+/* Client Feedback Section Styling */
+#client-feedback {
+    background-color: #f9f9f9; /* Light background color */
+    padding: 30px; /* Padding around the section */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    margin-bottom: 30px; /* Space below the section */
+    width: 80%;
+    margin: 0 auto; /* Center the section */
+}
+
+#client-feedback h2 {
+    font-size: 2.5rem; /* Larger title font */
+    color: #333; /* Dark color for the title */
+    text-align: center; /* Center the title */
+    margin-bottom: 20px; /* Space below the title */
+}
+
+#client-feedback .feedback-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+#client-feedback .feedback-item {
+    background-color: #fff; /* White background for each feedback item */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for items */
+    width: 80%; /* Control width of feedback items */
+    text-align: center; /* Center content */
+}
+
+#client-feedback .feedback-item h4 {
+    font-size: 1.8rem; /* Font size for the name */
+    color: #333; /* Dark color for the name */
+    font-weight: bold; /* Make the name bold */
+    margin-bottom: 10px; /* Space below the name */
+}
+
+#client-feedback .feedback-item p {
+    font-size: 1.4rem; /* Font size for the feedback text */
+    color: #555; /* Slightly lighter color for the feedback text */
+    line-height: 1.6; /* Line height for better readability */
+}
+
+#client-feedback .feedback-item .stars {
+    margin-top: 15px; /* Space between the feedback and the rating */
+}
+
+#client-feedback .feedback-item .stars i {
+    color: #FFD700; /* Golden color for stars */
+    font-size: 1.6rem; /* Size for the stars */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    #client-feedback {
+        padding: 20px; /* Adjust padding for smaller screens */
+        width: 90%; /* Make the section a bit wider */
+    }
+
+    #client-feedback h2 {
+        font-size: 2rem; /* Reduce title font size */
+    }
+
+    #client-feedback .feedback-item {
+        width: 95%; /* Make feedback items take up more space */
+    }
+}
+/* Client Feedback Form Styling */
+#client-feedback-form {
+    background-color: #f9f9f9; /* Light background color */
+    padding: 30px; /* Padding inside the form */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    width: 60%;
+    margin: 30px auto; /* Center the form */
+}
+
+#client-feedback-form h2 {
+    font-size: 2.5rem; /* Larger title font */
+    color: #333; /* Dark color for the title */
+    text-align: center; /* Center the title */
+    margin-bottom: 20px; /* Space below the title */
+}
+
+#client-feedback-form input, #client-feedback-form textarea {
+    width: 100%; /* Full width for input and textarea */
+    padding: 12px; /* Padding inside the fields */
+    margin-bottom: 15px; /* Space between fields */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Rounded corners for inputs */
+    font-size: 1rem; /* Font size inside inputs */
+}
+
+#client-feedback-form textarea {
+    height: 150px; /* Set a height for the textarea */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+#client-feedback-form button {
+    background-color: #007bff; /* Blue color for the button */
+    color: white; /* White text color */
+    padding: 12px 25px; /* Button padding */
+    font-size: 1.2rem; /* Button text size */
+    border: none;
+    border-radius: 5px; /* Rounded button corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth color change */
+}
+
+#client-feedback-form button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+#client-feedback-form .form-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: #333;
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+    #client-feedback-form {
+        width: 80%; /* Make form take more space on small screens */
+    }
+
+    #client-feedback-form h2 {
+        font-size: 2rem; /* Smaller font size for the title on small screens */
+    }
+}
+/* Style for heart icon */
+.like-btn {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #ccc; /* Default gray color */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.like-btn.liked {
+    color: red; /* Red when liked */
+}
+
+/* Style for liked dishes list */
+#liked-dishes {
+    padding: 20px;
+    text-align: center;
+}
+
+#liked-dishes h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#liked-dishes-list {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#liked-dishes-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #f9f9f9;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+#liked-dishes-list li span {
+    font-size: 1.2rem;
+}
+
+#liked-dishes-list li .remove-btn {
+    cursor: pointer;
+    color: red;
+    font-size: 1.2rem;
+}
+/* Cart View Styling */
+#cart-box {
+    display: none; /* Hidden initially */
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    z-index: 1000;
+}
+
+#cart-box h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#cart-box ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cart-box ul li {
+    font-size: 1.2rem;
+    margin: 5px 0;
+    color: #555;
+}
+
+#cart-box ul li span {
+    font-weight: bold;
+    color: #333;
+}
+
+
+    
