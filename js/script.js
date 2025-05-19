@@ -1,99 +1,94 @@
 let menu = document.querySelector('#menu-bars');
 let navbar = document.querySelector('.navbar');
 
-menu.onclick = () =>{
-  menu.classList.toggle('fa-times');
-  navbar.classList.toggle('active');
+menu.onclick = () => {
+    menu.classList.toggle('fa-times');
+    navbar.classList.toggle('active');
 }
 
 let section = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header .navbar a');
 
-window.onscroll = () =>{
+window.onscroll = () => {
+    menu.classList.remove('fa-times');
+    navbar.classList.remove('active');
 
-  menu.classList.remove('fa-times');
-  navbar.classList.remove('active');
+    section.forEach(sec => {
+        let top = window.scrollY;
+        let height = sec.offsetHeight;
+        let offset = sec.offsetTop - 150;
+        let id = sec.getAttribute('id');
 
-  section.forEach(sec =>{
-
-    let top = window.scrollY;
-    let height = sec.offsetHeight;
-    let offset = sec.offsetTop - 150;
-    let id = sec.getAttribute('id');
-
-    if(top >= offset && top < offset + height){
-      navLinks.forEach(links =>{
-        links.classList.remove('active');
-        document.querySelector('header .navbar a[href*='+id+']').classList.add('active');
-      });
-    };
-
-  });
-
+        if (top >= offset && top < offset + height) {
+            navLinks.forEach(links => {
+                links.classList.remove('active');
+                document.querySelector('header .navbar a[href*=' + id + ']').classList.add('active');
+            });
+        };
+    });
 }
 
-// When the search icon is clicked
+// Search form toggle
 document.querySelector('#search-icon').onclick = () => {
-  document.querySelector('#search-form').classList.toggle('active'); // Toggle search form visibility
+    document.querySelector('#search-form').classList.toggle('active');
 };
 
-// When the close icon is clicked
 document.querySelector('#close').onclick = () => {
-  document.querySelector('#search-form').classList.remove('active'); // Hide the search form
+    document.querySelector('#search-form').classList.remove('active');
 };
 
-
+// Swiper for home slider
 var swiper = new Swiper(".home-slider", {
-  spaceBetween: 30,
-  centeredSlides: true,
-  autoplay: {
-    delay: 7500,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  loop:true,
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+        delay: 7500,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    loop: true,
 });
 
+// Swiper for review slider
 var swiper = new Swiper(".review-slider", {
-  spaceBetween: 20,
-  centeredSlides: true,
-  autoplay: {
-    delay: 7500,
-    disableOnInteraction: false,
-  },
-  loop:true,
-  breakpoints: {
-    0: {
-        slidesPerView: 1,
+    spaceBetween: 20,
+    centeredSlides: true,
+    autoplay: {
+        delay: 7500,
+        disableOnInteraction: false,
     },
-    640: {
-      slidesPerView: 2,
+    loop: true,
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+        },
+        640: {
+            slidesPerView: 2,
+        },
+        768: {
+            slidesPerView: 2,
+        },
+        1024: {
+            slidesPerView: 3,
+        },
     },
-    768: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-    },
-  },
 });
 
-function loader(){
-  document.querySelector('.loader-container').classList.add('fade-out');
+// Loader animation
+function loader() {
+    document.querySelector('.loader-container').classList.add('fade-out');
 }
 
-function fadeOut(){
-  setInterval(loader, 3000);
+function fadeOut() {
+    setInterval(loader, 3000);
 }
 
 window.onload = fadeOut;
 
-    
-        // Existing cart-related functionality
-
+// Cart functionality
 let cartCount = 0;
 let cartItems = [];
 
@@ -105,22 +100,33 @@ const cartItemsList = document.getElementById('cart-items');
 
 function updateCart() {
     cartDisplay.textContent = cartCount;
+    cartItemsList.innerHTML = '';
+    cartItems.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `${item.name} - ${item.price} <span class="remove-btn" data-index="${index}"><i class="fas fa-trash"></i></span>`;
+        cartItemsList.appendChild(li);
+    });
+
+    document.querySelectorAll('.remove-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const index = parseInt(this.getAttribute('data-index'));
+            cartItems.splice(index, 1);
+            cartCount--;
+            updateCart();
+        });
+    });
 }
 
 addToCartButtons.forEach(button => {
     button.addEventListener('click', function (e) {
         if (this.textContent.trim().toLowerCase() === 'add to cart') {
             e.preventDefault();
-
             const parent = this.parentElement;
             const itemName = parent.querySelector('h3')?.innerText || 'Item';
             const itemPrice = parent.querySelector('span')?.innerText || 'Price N/A';
-
-            // Store item name and price as object
             cartItems.push({ name: itemName, price: itemPrice });
             cartCount++;
             updateCart();
-
             this.textContent = 'Added!';
             setTimeout(() => {
                 this.textContent = 'Add to Cart';
@@ -129,38 +135,22 @@ addToCartButtons.forEach(button => {
     });
 });
 
-
 cartIcon.addEventListener('click', function (e) {
     e.preventDefault();
     cartBox.style.display = cartBox.style.display === 'none' ? 'block' : 'none';
-
-    // Clear existing items
-    cartItemsList.innerHTML = '';
-
-    // Add updated items
-    cartItems.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `${item.name} - ${item.price}`;
-        cartItemsList.appendChild(li);
-    });
+    updateCart();
 });
 
 // Liked Dishes Functionality
 let likedDishesList = document.getElementById('liked-dishes-list');
-
-
-// Adding click event to each "like" button (heart icon)
 let likeButtons = document.querySelectorAll('.dishes .box .fa-heart');
 
 likeButtons.forEach(button => {
     button.addEventListener('click', function (e) {
-        e.preventDefault(); // Prevent the default link behavior
-
+        e.preventDefault();
         const parent = this.parentElement;
-        const dishName = parent.querySelector('h3').innerText; // Get the dish name
-        const dishPrice = parent.querySelector('span').innerText; // Get the dish price
-        
-        // Check if the dish is already in the liked list
+        const dishName = parent.querySelector('h3').innerText;
+        const dishPrice = parent.querySelector('span').innerText;
         let isAlreadyLiked = false;
         const allLikedItems = likedDishesList.querySelectorAll('li');
         allLikedItems.forEach(item => {
@@ -168,21 +158,26 @@ likeButtons.forEach(button => {
                 isAlreadyLiked = true;
             }
         });
-
         if (!isAlreadyLiked) {
-            // If not already liked, add the dish to the list
             const li = document.createElement('li');
-            li.textContent = `${dishName} - ${dishPrice}`; // Add dish name and price
-            likedDishesList.appendChild(li); // Append it to the liked dishes list
+            li.textContent = `${dishName} - ${dishPrice}`;
+            likedDishesList.appendChild(li);
         } else {
-            alert('This dish is already in your liked list.'); // Alert if already liked
+            alert('This dish is already in your liked list.');
         }
-
-        // Change the color of the heart icon to red (liked state)
-        this.style.color = this.style.color === 'red' ? '#eee' : 'red'; // Toggle color
+        this.style.color = this.style.color === 'red' ? '#eee' : 'red';
     });
 });
 
-
-
-
+// Feedback form submission
+document.getElementById("feedbackForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const message = document.getElementById("message").value.trim();
+    if (name && message) {
+        document.getElementById("response").innerText = "Thanks for your feedback, " + name + "!";
+        document.getElementById("feedbackForm").reset();
+    } else {
+        document.getElementById("response").innerText = "Please fill out all fields.";
+    }
+});
